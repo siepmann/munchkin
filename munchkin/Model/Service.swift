@@ -30,12 +30,25 @@ class Service {
         return newUser
     }
     
+    fileprivate func createUserList(_ users: [User]) -> [UserModel] {
+        var retorno = [UserModel]()
+        
+        retorno.append(contentsOf: users.map { createUser($0) } )
+        return retorno
+    }
+    
+    fileprivate func createUser(_ user: User) -> UserModel {
+        return UserModel(user.name!,
+                         gender: Gender(rawValue: user.gender ?? "0")!,
+                         objectId: user.objectID)
+    }
+    
     func addGroup(_ groupName: String, users: [UserModel]) {
         let newGroup = Group(context: context)
         newGroup.name = groupName
         
         users.forEach { user in
-            newGroup.user = createUser(user)
+            newGroup.users?.adding(createUser(user))
         }
         saveContext()
     }
@@ -51,22 +64,20 @@ class Service {
 
 //MARK: - List
 extension Service {
-    func listUsers() -> [UserModel] {
+    func listUsersWithoutGroup() -> [UserModel] {
         var users: [User] = []
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        
+        fetchRequest.predicate = NSPredicate(format: "group == nil || group.@count = 0")
         do {
             users = try context.fetch(fetchRequest) as! [User]
         } catch {
             print("Fetching Failed")
         }
         
-        return users.map {
-            UserModel($0.name!, gender: Gender(rawValue: $0.gender ?? "0")!, objectId: $0.objectID)
-        }
+        return users.map { createUser($0) }
     }
     
-    func listGroupData(groupName name: String) -> [Group] {
+    func listGroupData(groupName name: String) -> [GroupModel] {
         var groupData: [Group] = []
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Group")
         fetchRequest.predicate = NSPredicate(format: "name = %@", name)
@@ -76,7 +87,10 @@ extension Service {
         } catch {
             print("Fetching Failed")
         }
-        return groupData
+        
+        return groupData.map {
+            GroupModel($0.name!, users: createUserList($0.users?.allObjects as! [User]))
+        }
     }
 }
 

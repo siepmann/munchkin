@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     let cellIdentifier = "addUserCell"
     
-    var userList: [UserModel] = Service.shared.listUsers()
+    var userList: [UserModel] = Service.shared.listUsersWithoutGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()

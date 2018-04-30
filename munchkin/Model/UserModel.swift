@@ -32,6 +32,11 @@ class UserModel {
 }
 
 class GroupModel {
-    var groupName: String = ""
-    var users: [UserModel] = []
+    var groupName: String
+    var users: [UserModel]
+    
+    init(_ name: String, users: [UserModel]) {
+        self.groupName = name
+        self.users = users
+    }
 }
