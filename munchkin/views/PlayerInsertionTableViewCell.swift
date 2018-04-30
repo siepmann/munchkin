@@ -9,7 +9,6 @@
 import UIKit
 
 class PlayerInsertionTableViewCell: UITableViewCell {
-
     @IBOutlet weak var playerNameTextField: UITextField!
     @IBOutlet weak var playerGenderButton: UIButton!
     
@@ -18,5 +17,14 @@ class PlayerInsertionTableViewCell: UITableViewCell {
     }
     
     @IBAction func genderChange(_ sender: Any) {
+    }
+}
+
+extension PlayerInsertionTableViewCell: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        let user = User()
+        user.name = textField.text
+        user.gender = ""
+        Service.shared.addUser(user)
     }
 }
