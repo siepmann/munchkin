@@ -13,6 +13,8 @@
 		6F6EC67620972978005F7AED /* munchkin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F6EC67420972978005F7AED /* munchkin.xcdatamodeld */; };
 		6F6EC67820972978005F7AED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F6EC67720972978005F7AED /* Assets.xcassets */; };
 		6F6EC67B20972978005F7AED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F6EC67920972978005F7AED /* LaunchScreen.storyboard */; };
+		6F6EC68620972B87005F7AED /* PlayerInsertionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6EC68420972B87005F7AED /* PlayerInsertionTableViewCell.swift */; };
+		6F6EC68720972B87005F7AED /* PlayerInsertionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F6EC68520972B87005F7AED /* PlayerInsertionTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		6F6EC67720972978005F7AED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F6EC67A20972978005F7AED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F6EC67C20972978005F7AED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F6EC68420972B87005F7AED /* PlayerInsertionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInsertionTableViewCell.swift; sourceTree = "<group>"; };
+		6F6EC68520972B87005F7AED /* PlayerInsertionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerInsertionTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,33 @@
 		6F6EC66C20972978005F7AED /* munchkin */ = {
 			isa = PBXGroup;
 			children = (
+				6F6EC68320972B3F005F7AED /* coreData */,
+				6F6EC68220972983005F7AED /* views */,
 				6F6EC66D20972978005F7AED /* AppDelegate.swift */,
 				6F6EC66F20972978005F7AED /* ViewController.swift */,
 				6F6EC67120972978005F7AED /* Main.storyboard */,
 				6F6EC67720972978005F7AED /* Assets.xcassets */,
 				6F6EC67920972978005F7AED /* LaunchScreen.storyboard */,
 				6F6EC67C20972978005F7AED /* Info.plist */,
-				6F6EC67420972978005F7AED /* munchkin.xcdatamodeld */,
 			);
 			path = munchkin;
+			sourceTree = "<group>";
+		};
+		6F6EC68220972983005F7AED /* views */ = {
+			isa = PBXGroup;
+			children = (
+				6F6EC68420972B87005F7AED /* PlayerInsertionTableViewCell.swift */,
+				6F6EC68520972B87005F7AED /* PlayerInsertionTableViewCell.xib */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		6F6EC68320972B3F005F7AED /* coreData */ = {
+			isa = PBXGroup;
+			children = (
+				6F6EC67420972978005F7AED /* munchkin.xcdatamodeld */,
+			);
+			path = coreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +148,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F6EC68720972B87005F7AED /* PlayerInsertionTableViewCell.xib in Resources */,
 				6F6EC67B20972978005F7AED /* LaunchScreen.storyboard in Resources */,
 				6F6EC67820972978005F7AED /* Assets.xcassets in Resources */,
 				6F6EC67320972978005F7AED /* Main.storyboard in Resources */,
@@ -139,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F6EC68620972B87005F7AED /* PlayerInsertionTableViewCell.swift in Sources */,
 				6F6EC67020972978005F7AED /* ViewController.swift in Sources */,
 				6F6EC67620972978005F7AED /* munchkin.xcdatamodeld in Sources */,
 				6F6EC66E20972978005F7AED /* AppDelegate.swift in Sources */,
