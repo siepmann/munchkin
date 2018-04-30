@@ -16,21 +16,21 @@ class Service {
     
     static let shared = Service()
     
-    func addUser(_ user: User) {
+    func addUser(_ user: UserModel) {
         createUser(user)
         saveContext()
     }
     
     @discardableResult
-    fileprivate func createUser(_ user: User) -> User {
+    fileprivate func createUser(_ user: UserModel) -> User {
         let newUser = User(context: context)
         newUser.name = user.name
-        newUser.gender = user.gender
+        newUser.gender = user.gender.rawValue
         
         return newUser
     }
     
-    func addGroup(_ groupName: String, users: [User]) {
+    func addGroup(_ groupName: String, users: [UserModel]) {
         let newGroup = Group(context: context)
         newGroup.name = groupName
         
@@ -51,7 +51,7 @@ class Service {
 
 //MARK: - List
 extension Service {
-    func listUsers() -> [User] {
+    func listUsers() -> [UserModel] {
         var users: [User] = []
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
         
@@ -61,7 +61,9 @@ extension Service {
             print("Fetching Failed")
         }
         
-        return users
+        return users.map {
+            UserModel($0.name!, gender: Gender(rawValue: $0.gender ?? "0")!, objectId: $0.objectID)
+        }
     }
     
     func listGroupData(groupName name: String) -> [Group] {
@@ -75,5 +77,14 @@ extension Service {
             print("Fetching Failed")
         }
         return groupData
+    }
+}
+
+//MARK: - Delete
+extension Service{
+    func deleteUser(_ user: UserModel) {
+        guard let objId = user.objectId else { return }
+        context.delete(context.object(with: objId))
+        saveContext()
     }
 }

@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "munchkin/Model/Service.swift"
-            timestampString = "546797459.186915"
+            filePath = "munchkin/views/PlayerInsertionTableViewCell.swift"
+            timestampString = "546805052.569392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "createUser(_:)"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "textFieldDidEndEditing(_:reason:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

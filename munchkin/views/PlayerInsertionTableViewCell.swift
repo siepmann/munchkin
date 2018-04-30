@@ -14,6 +14,11 @@ class PlayerInsertionTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        playerNameTextField.delegate = self
+    }
+    
+    func setup(_ model: UserModel) {
+        playerNameTextField.text = model.name
     }
     
     @IBAction func genderChange(_ sender: Any) {
@@ -22,9 +27,7 @@ class PlayerInsertionTableViewCell: UITableViewCell {
 
 extension PlayerInsertionTableViewCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-        let user = User()
-        user.name = textField.text
-        user.gender = ""
-        Service.shared.addUser(user)
+        guard let playerName = textField.text, !playerName.isEmpty else { return }
+        Service.shared.addUser(UserModel(playerName, gender: .male))
     }
 }
